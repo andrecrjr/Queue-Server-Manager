@@ -11,6 +11,7 @@ queueExample.adapter.setBasePath('/admin');
 app.use('/admin', queueExample.adapter.getRouter());
 
 app.get("/add", async (req,res)=>{
+  //add to list queue
   queueExample.getQueue().add('random value',{"randomic json":`${Math.random() * 100}`},{
     attempts: 5,
     backoff: {
