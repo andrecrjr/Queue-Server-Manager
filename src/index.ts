@@ -1,19 +1,18 @@
 
 import express from 'express';
-import {bananoQueue} from './Controller/Queue';
+import {queueExample} from './Controller/Queue';
 
 
 
 const app = express();
 
-bananoQueue.expressAdapter()
-bananoQueue.adapter.setBasePath('/admin');
-app.use('/admin', bananoQueue.adapter.getRouter());
-
+queueExample.expressAdapter()
+queueExample.adapter.setBasePath('/admin');
+app.use('/admin', queueExample.adapter.getRouter());
 
 app.get("/add", async (req,res)=>{
-   bananoQueue.getQueue().add('banano-address',{"banAddress":`ban_${Math.random() * 100}`},{
-    attempts: 3,
+  queueExample.getQueue().add('random value',{"randomic json":`${Math.random() * 100}`},{
+    attempts: 5,
     backoff: {
       type: 'custom',
     },
@@ -22,7 +21,7 @@ app.get("/add", async (req,res)=>{
 })
 
 app.listen("8000", async ()=>{
-  await bananoQueue.processQueue();
+  await queueExample.processQueue();
 
   console.log("Connect into 8000")
 })

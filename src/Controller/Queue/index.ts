@@ -55,6 +55,6 @@ class QueueManager {
     }
 }
 //instantiate any queue with its name
-const bananoQueue = new QueueManager("bananoQueue")
+const queueExample = new QueueManager("queueExample")
 
-export {QueueManager, bananoQueue};
+export {QueueManager, queueExample};
