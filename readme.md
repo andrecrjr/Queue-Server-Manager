@@ -1,4 +1,4 @@
-# Basic BullMQ Queue Managerment
+# Basic BullMQ Queue Management
 
 Basic generic management to helping create queue management system.
 
