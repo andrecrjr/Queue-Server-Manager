@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  backend:
+    build: .
+    container_name: backend_queue
+    
+    ports:
+      - '8000:8000'
+    volumes:
+      - .:/app
+    depends_on:
+      - queue_data
+    env_file:
+      - .env_development
+  redis_server:
+    image: redis:6.2-alpine
+    restart: always
+    ports:
+      - '6379:6379'
+    command: redis-server
+    volumes: 
+      - cache:/data
+volumes:
+  cache:
+    driver: local
